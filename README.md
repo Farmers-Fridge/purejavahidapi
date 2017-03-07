@@ -1,3 +1,6 @@
+# Hopkins Underground
+This is a fork of the PureJavaHidApi. We publish this artifact to our own S3 maven repo. The fork allows us to build from source and bugfix if necessary. This library is not published to public maven repos.
+
 <sup><sub>*"I'm inspired,intrigued, amazed and annoyed by how difficult, complex, rare and long time coming simple cross platform USB IO is!"*</sub></sup>
 
 
