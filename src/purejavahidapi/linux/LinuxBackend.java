@@ -103,19 +103,19 @@ public class LinuxBackend extends Backend {
 
     @Override
     public void reset() {
-        int usbBusDevHandle = open("/dev/magtek", O_RDWR);
-        // If we have a good handle, return it.
-        if (usbBusDevHandle <= 0) {
-            throw new RuntimeException("open() failed, errno " + Native.getLastError());
-        }
-        int[] nullPointer = new int[]{0};
-        System.out.print(String.format("sending ioctl(%s, %s, 0) = ", usbBusDevHandle, USBDEVFS_RESET));
-        int resetResult = ioctl(usbBusDevHandle, USBDEVFS_RESET, nullPointer);
-        System.out.println(String.format("%s", resetResult));
-        if (resetResult < 0) {
-            throw new RuntimeException("ioctl(...USBDEVFS_RESET..) failed");
-        }
-        UdevLibrary.close(usbBusDevHandle);
+//        int usbBusDevHandle = open("/dev/magtek", O_RDWR);
+//        // If we have a good handle, return it.
+//        if (usbBusDevHandle <= 0) {
+//            throw new RuntimeException("open() failed, errno " + Native.getLastError());
+//        }
+//        int[] nullPointer = new int[]{0};
+//        System.out.print(String.format("sending ioctl(%s, %s, 0) = ", usbBusDevHandle, USBDEVFS_RESET));
+//        int resetResult = ioctl(usbBusDevHandle, USBDEVFS_RESET, nullPointer);
+//        System.out.println(String.format("%s", resetResult));
+//        if (resetResult < 0) {
+//            throw new RuntimeException("ioctl(...USBDEVFS_RESET..) failed");
+//        }
+//        UdevLibrary.close(usbBusDevHandle);
     }
 
 	@Override
