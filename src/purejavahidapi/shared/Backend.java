@@ -14,6 +14,8 @@ abstract public class Backend {
 
 	public abstract void init();
 
+    public abstract void reset();
+
 	public abstract void cleanup();
 
 	public abstract List<HidDeviceInfo> enumerateDevices();

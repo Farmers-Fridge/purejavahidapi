@@ -54,6 +54,7 @@ public class UdevLibrary {
 	public final static int _IOC_NRBITS = 8;
 	public final static int _IOC_TYPEBITS = 8;
 	public final static int _IOC_SIZEBITS = 14;
+	public final static int _IOC_NONE = 0;
 	public final static int _IOC_READ = 2;
 	public final static int _IOC_TYPECHECK = 4; // #define _IOC_TYPECHECK	(	 	t	)	   (sizeof(t))
 
@@ -73,11 +74,17 @@ public class UdevLibrary {
 		return _IOC(_IOC_READ, type, nr, size);
 	}
 
+    public static int _IO(int type, int nr) {
+        return _IOC(_IOC_NONE, type, nr, 0);
+    }
+
 	public static int HIDIOCGRDESC = _IOR('H', 0x02, new hidraw_report_descriptor().size());
 
 	public static int HIDIOCGRDESCSIZE = _IOR('H', 0x01, SIZE_OF_INT);
 
-	public static class hidraw_report_descriptor extends Structure {
+    public static int USBDEVFS_RESET = _IO('U', 20);
+
+    public static class hidraw_report_descriptor extends Structure {
 		public int size;
 		public byte[] value = new byte[HID_MAX_DESCRIPTOR_SIZE];
 

@@ -35,12 +35,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
+import com.sun.jna.Native;
 import purejavahidapi.linux.CLibrary.pollfd;
 import purejavahidapi.linux.UdevLibrary.udev;
 import purejavahidapi.shared.Backend;
 import static purejavahidapi.linux.CLibrary.POLLIN;
 import static purejavahidapi.linux.CLibrary.poll;
 import static purejavahidapi.linux.UdevLibrary.*;
+import static purejavahidapi.linux.UdevLibrary.USBDEVFS_RESET;
 
 public class LinuxBackend extends Backend {
 
@@ -98,6 +100,23 @@ public class LinuxBackend extends Backend {
 			e.printStackTrace();
 		}
 	}
+
+    @Override
+    public void reset() {
+        int usbBusDevHandle = open("/dev/magtek", O_RDWR);
+        // If we have a good handle, return it.
+        if (usbBusDevHandle <= 0) {
+            throw new RuntimeException("open() failed, errno " + Native.getLastError());
+        }
+        int[] nullPointer = new int[]{0};
+        System.out.print(String.format("sending ioctl(%s, %s, 0) = ", usbBusDevHandle, USBDEVFS_RESET));
+        int resetResult = ioctl(usbBusDevHandle, USBDEVFS_RESET, nullPointer);
+        System.out.println(String.format("%s", resetResult));
+        if (resetResult < 0) {
+            throw new RuntimeException("ioctl(...USBDEVFS_RESET..) failed");
+        }
+        UdevLibrary.close(usbBusDevHandle);
+    }
 
 	@Override
 	public void cleanup() {
