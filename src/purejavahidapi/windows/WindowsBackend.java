@@ -56,7 +56,12 @@ public class WindowsBackend extends Backend {
 		new DeviceRemovalHandler(this);
 	}
 
-	@Override
+    @Override
+    public void reset() {
+
+    }
+
+    @Override
 	public void cleanup() {
 
 	}

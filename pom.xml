@@ -15,7 +15,7 @@
     </properties>
 
     <build>
-        <sourceDirectory>src/purejavahidapi</sourceDirectory>
+        <sourceDirectory>src</sourceDirectory>
 
         <plugins> 
             <plugin>

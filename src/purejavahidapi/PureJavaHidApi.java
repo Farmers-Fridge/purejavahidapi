@@ -104,6 +104,14 @@ public class PureJavaHidApi {
 		}
 	}
 
+    public static void resetBus() {
+        synchronized (m_Mutex) {
+            if (m_Backend==null)
+                throw new IllegalStateException("Unsupported platform");
+            m_Backend.reset();
+        }
+    }
+
 	static {
 		if (Platform.isMac()) {
 			m_Backend = new purejavahidapi.macosx.MacOsXBackend();

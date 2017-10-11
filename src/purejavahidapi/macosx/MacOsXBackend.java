@@ -122,4 +122,9 @@ public class MacOsXBackend extends Backend {
 		}
 	}
 
+    @Override
+    public void reset() {
+
+    }
+
 }
