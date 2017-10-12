@@ -18,13 +18,18 @@ public class Example2 {
 						// if (info.getVendorId() == (short) 0x16C0 &&
 						// info.getProductId() == (short) 0x05DF) {
 						//if (info.getVendorId() == (short) 0x16C0 && info.getProductId() == (short) 0x0a99) {
-							if (info.getVendorId() == (short) 0x16D0 && info.getProductId() == (short) 0x044B) {
+							if (info.getVendorId() == (short) 0x0801 && info.getProductId() == (short) 0x0002) {
 							devInfo = info;
 							break;
 						}
 					}
 					if (devInfo == null) {
 						System.out.println("device not found");
+//						try {
+//							PureJavaHidApi.resetBus();
+//						}catch(RuntimeException e){
+//							System.out.println("Reset failed:"+e.toString());
+//						}
 						Thread.sleep(1000);
 					} else {
 						System.out.println("device found");
