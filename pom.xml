@@ -4,7 +4,7 @@
 
     <groupId>com.hopkinsunderground</groupId>
     <artifactId>purejavahidapi</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.10-20171012</version>
 
     <name>Pure Java HID-API</name>
     <url>https://github.com/nyholku/purejavahidapi</url>
